@@ -101,6 +101,7 @@ def simulate_ooa(population_configurations, migration_matrix, demographic_events
     eprint('Starting simulations' + current_time())
     simulation = msprime.simulate(
         population_configurations = population_configurations,
+        demographic_events=demographic_events,
         migration_matrix=migration_matrix,
         mutation_rate=2e-8,
         recombination_map = msprime.RecombinationMap.read_hapmap(recomb)
