@@ -1,5 +1,6 @@
 from __future__ import print_function
 import sys
+sys.path.append('../msprime')
 import msprime
 import numpy as np
 import math
@@ -241,7 +242,8 @@ def clump_variants(simulation, summary_stats, nhaps, r2_threshold, window_size):
     ordered_positions = sorted(summary_stats.keys(), key=lambda x: summary_stats[x][-1])
     #[(x, (x in usable_positions.keys())) for x in ordered_positions]
     
-    eur_subset = simulation.subset(range(nhaps[0], (nhaps[0]+nhaps[1])))
+    # eur_subset = simulation.subset(range(nhaps[0], (nhaps[0]+nhaps[1])))
+    eur_subset = simulation.simplify(range(nhaps[0], (nhaps[0]+nhaps[1])))
     eur_index_pos = {}
     eur_pos_index = {}
     for mutation in tqdm(eur_subset.mutations(), total=eur_subset.get_num_mutations()):
